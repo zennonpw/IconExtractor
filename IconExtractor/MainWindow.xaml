@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IconExtractor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title=".dds icons extractor" Height="343" Width="510" Background="White" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Button Content="Select file" HorizontalAlignment="Left" Margin="8,14,0,0" VerticalAlignment="Top" Name="btnOpenFile" Click="btnOpenFile_Click" Width="75" Height="26"/>
+        <Label x:Name="lblFilePath" Content="File path" HorizontalAlignment="Left" Margin="88,14,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <ListBox x:Name="lbDdsNames" d:ItemsSource="{d:SampleData ItemCount=1000}" Margin="8,83,0,30" HorizontalAlignment="Left" Width="258"/>
+        <Label x:Name="lblStatusText" Content="Status:" HorizontalAlignment="Left" Margin="279,83,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblStatus" Content="waiting for file..." Margin="325,83,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="163"/>
+        <Button Content="Extract" HorizontalAlignment="Left" Margin="8,45,0,0" VerticalAlignment="Top" x:Name="btnExtract" Click="btnExtract_Click" Width="75" Height="26"/>
+
     </Grid>
 </Window>
