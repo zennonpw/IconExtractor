@@ -12,8 +12,8 @@
         <ListBox x:Name="lbDdsNames" d:ItemsSource="{d:SampleData ItemCount=1000}" Margin="0,106,0,7" HorizontalAlignment="Center" Width="492"/>
         <Label x:Name="lblStatusText" Content="Status:" HorizontalAlignment="Left" Margin="88,76,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblStatus" Content="waiting for file..." Margin="133,76,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="163"/>
-        <Button Content="Output" HorizontalAlignment="Left" Margin="8,45,0,0" VerticalAlignment="Top" x:Name="btnSelectFolder" Click="btnExtract_Click" Width="75" Height="26"/>
-        <Button Content="Extract" HorizontalAlignment="Left" Margin="8,75,0,0" VerticalAlignment="Top" x:Name="btnExtract_Copiar" Click="btnExtract_Click" Width="75" Height="26"/>
+        <Button Content="Output" HorizontalAlignment="Left" Margin="8,45,0,0" VerticalAlignment="Top" x:Name="btnOutputFolder" Click="btnOutputFolder_Click" Width="75" Height="26"/>
+        <Button Content="Extract" HorizontalAlignment="Left" Margin="8,75,0,0" VerticalAlignment="Top" x:Name="btnExtract" Click="btnExtract_Click" Width="75" Height="26"/>
         <Label x:Name="lblOutput" Content="Output path" HorizontalAlignment="Left" Margin="88,48,0,0" VerticalAlignment="Top" FontSize="10"/>
 
     </Grid>

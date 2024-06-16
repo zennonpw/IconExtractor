@@ -34,5 +34,10 @@ namespace IconExtractor
         {
 
         }
+
+        private void btnOutputFolder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
