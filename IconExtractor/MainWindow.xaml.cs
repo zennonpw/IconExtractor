@@ -6,7 +6,7 @@ namespace IconExtractor
     public partial class MainWindow : Window
     {
         private OpenFileDialog _ddsFile;
-
+        
         public MainWindow()
         {
             InitializeComponent();
