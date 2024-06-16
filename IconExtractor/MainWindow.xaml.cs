@@ -62,6 +62,7 @@ namespace IconExtractor
             }
         }
 
+        // based on dumbfck's code: https://www.elitepvpers.com/forum/pw-hacks-bots-cheats-exploits/1422109-autopot-ingame-menu.html#post12792417
         private void ExtractIcons()
         {
             Bitmap bm = _DDS.LoadImage(_ddsFile.FileName);
