@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.IO;
 using System.Text;
-using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
@@ -66,7 +65,7 @@ namespace IconExtractor
         private void ExtractIcons()
         {
             Bitmap bm = _DDS.LoadImage(_ddsFile.FileName);
-            bm.Save(_ddsFile.SafeFileName);
+            bm.Save(_ddsFile.SafeFileName.Replace(".dds",".png"));
             _iconFileRect = new Rectangle(0, 0, bm.Width, bm.Height);
 
             StreamReader sr = new StreamReader(_txtFile.SafeFileName, Encoding.GetEncoding("GB2312"));
@@ -89,7 +88,7 @@ namespace IconExtractor
                 try
                 {
                     Rectangle p = CalculateIconPositionFromDdsFile(iconIndex);
-                    bm.Clone(p, bmpImage.PixelFormat).Save($"{_folderBrowser.SelectedPath}/{line.Replace(".dds","")}.png");
+                    bm.Clone(p, bmpImage.PixelFormat).Save($"{_folderBrowser.SelectedPath}/{line.Replace(".dds", ".png")}");
                     lbDdsNames.Items.Add(line);
                     iconIndex++;
                 }
