@@ -57,4 +57,4 @@ The user interface consists of buttons to open the .dds and .txt files, select t
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/zennonpw/IconExtractor/master/LICENSE) file for more details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/zennonpw/IconExtractor/blob/master/LICENSE) file for more details.
