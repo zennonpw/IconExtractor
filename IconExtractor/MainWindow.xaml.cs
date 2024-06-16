@@ -68,7 +68,7 @@ namespace IconExtractor
             bm.Save(_ddsFile.SafeFileName.Replace(".dds",".png"));
             _iconFileRect = new Rectangle(0, 0, bm.Width, bm.Height);
 
-            StreamReader sr = new StreamReader(_txtFile.SafeFileName, Encoding.GetEncoding("GB2312"));
+            StreamReader sr = new StreamReader(_txtFile.FileName, Encoding.GetEncoding("GB2312"));
 
             int tempY = Convert.ToInt32(sr.ReadLine());
             int tempX = Convert.ToInt32(sr.ReadLine());
