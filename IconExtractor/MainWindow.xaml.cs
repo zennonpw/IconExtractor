@@ -12,16 +12,17 @@ namespace IconExtractor
     public partial class MainWindow : Window
     {
         private OpenFileDialog _ddsFile;
-        private FolderBrowserDialog folderBrowser;
-        private Rectangle itemIconRect;
-        private Rectangle iconFileRect;
+        private OpenFileDialog _txtFile;
+        private FolderBrowserDialog _folderBrowser;
+        private Rectangle _itemIconRect;
+        private Rectangle _iconFileRect;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void OpenFile()
+        private void OpenDds()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = " |*.dds";
@@ -34,15 +35,27 @@ namespace IconExtractor
             }
         }
 
+        private void OpenTxt()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = " |*.txt";
+            openFileDialog.Title = "Select a .txt file";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                _txtFile = openFileDialog;
+                lblTxtPath.Content = _txtFile.FileName;
+            }
+        }
+
         private void SelectOutputFolder()
         {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            DialogResult result = folderBrowserDialog.ShowDialog();
+            FolderBrowserDialog _folderBrowserDialog = new FolderBrowserDialog();
+            DialogResult result = _folderBrowserDialog.ShowDialog();
 
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                folderBrowser = folderBrowserDialog;
-                lblOutput.Content = folderBrowser.SelectedPath;
+                _folderBrowser = _folderBrowserDialog;
+                lblOutput.Content = _folderBrowser.SelectedPath;
             }
             else
             {
@@ -54,17 +67,17 @@ namespace IconExtractor
         {
             Bitmap bm = _DDS.LoadImage(_ddsFile.FileName);
             bm.Save(_ddsFile.SafeFileName);
-            iconFileRect = new Rectangle(0, 0, bm.Width, bm.Height);
+            _iconFileRect = new Rectangle(0, 0, bm.Width, bm.Height);
 
-            StreamReader sr = new StreamReader($"{_ddsFile.SafeFileName.Replace(".dds",".txt")}", Encoding.GetEncoding("GB2312"));
+            StreamReader sr = new StreamReader(_txtFile.SafeFileName, Encoding.GetEncoding("GB2312"));
 
             int tempY = Convert.ToInt32(sr.ReadLine());
             int tempX = Convert.ToInt32(sr.ReadLine());
-            itemIconRect = new Rectangle(0, 0, tempY, tempX);
+            _itemIconRect = new Rectangle(0, 0, tempY, tempX);
 
             tempY = Convert.ToInt32(sr.ReadLine());
             tempX = Convert.ToInt32(sr.ReadLine());
-            iconFileRect = new Rectangle(0, 0, tempX, tempY);
+            _iconFileRect = new Rectangle(0, 0, tempX, tempY);
 
             string line;
             int iconIndex = 0;
@@ -76,7 +89,7 @@ namespace IconExtractor
                 try
                 {
                     Rectangle p = CalculateIconPositionFromDdsFile(iconIndex);
-                    bm.Clone(p, bmpImage.PixelFormat).Save($"{folderBrowser.SelectedPath}/{line.Replace(".dds","")}.png");
+                    bm.Clone(p, bmpImage.PixelFormat).Save($"{_folderBrowser.SelectedPath}/{line.Replace(".dds","")}.png");
                     iconIndex++;
                 }
                 catch { }
@@ -85,18 +98,18 @@ namespace IconExtractor
 
         private Rectangle CalculateIconPositionFromDdsFile(int iconIndex)
         {
-            Rectangle pos = new Rectangle(0, 0, itemIconRect.Width, itemIconRect.Height);
+            Rectangle pos = new Rectangle(0, 0, _itemIconRect.Width, _itemIconRect.Height);
             int remainder;
-            int quotient = Math.DivRem(iconIndex, iconFileRect.Width, out remainder);
-            pos.X = remainder * itemIconRect.Width;
-            pos.Y = quotient * itemIconRect.Height;
+            int quotient = Math.DivRem(iconIndex, _iconFileRect.Width, out remainder);
+            pos.X = remainder * _itemIconRect.Width;
+            pos.Y = quotient * _itemIconRect.Height;
 
             return pos;
         }
 
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
-            OpenFile();
+            OpenDds();
         }
 
         private void btnExtract_Click(object sender, RoutedEventArgs e)
@@ -111,7 +124,7 @@ namespace IconExtractor
 
         private void btnOpenTxt_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenTxt();
         }
     }
 }
