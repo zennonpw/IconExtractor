@@ -1,8 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**
+ * DDSReader.java
+ * 
+ * Copyright (c) 2015 Kenji Sasaki
+ * Released under the MIT license.
+ * https://github.com/npedotnet/DDSReader/blob/master/LICENSE
+ * 
+ * English document
+ * https://github.com/npedotnet/DDSReader/blob/master/README.md
+ * 
+ * Japanese document
+ * http://3dtech.jp/wiki/index.php?DDSReader
+ * 
+ * Java -> C# by Elfe (https://forums.crateentertainment.com/t/c-library-gdimagelibrary/31566)
+ * Source: https://github.com/npedotnet/DDSReader/blob/master/src/java/DDSReader.java
+ * (see above mentioned license)
+ */
 
 namespace IconExtractor
 {

@@ -1,4 +1,9 @@
-﻿using System;
+﻿/**
+ * by Elfe
+ * Source: https://forums.crateentertainment.com/t/c-library-gdimagelibrary/31566
+ */
+
+using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
