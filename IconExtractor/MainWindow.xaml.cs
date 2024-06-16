@@ -108,5 +108,10 @@ namespace IconExtractor
         {
             SelectOutputFolder();
         }
+
+        private void btnOpenTxt_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
